@@ -29,7 +29,7 @@
       </div>
       <div class="d-flex flex-column justify-center" style="width: 100%; padding: 55px 0px;">
         <p style="margin-bottom: 0; font-size: 30px; max-width: 464px; margin: 0 auto;">Now just upload your favourite NFT image to your brick</p>
-        <div class="d-flex bg-primary" style="border-radius: 30px; width: 290px; aspect-ratio: 290 / 204; margin-top: 37px; margin-bottom: 54px; margin-right: auto; margin-left: auto;">
+        <div onclick="toggleModal()" class="d-flex bg-primary" style="cursor: pointer; border-radius: 30px; width: 290px; aspect-ratio: 290 / 204; margin-top: 37px; margin-bottom: 54px; margin-right: auto; margin-left: auto;">
           <img src="./assets/camera.png" style="margin: auto; aspect-ratio: 1 / 1; width: 108px;" />
         </div>
         <button style="margin-left: auto; border: none; width: 130px; aspect-ratio: 130 / 50; font-size: 18px; color: white;" class="rounded-pill p-3 bg-primary">Go</button>
@@ -50,6 +50,30 @@
       </div>
     </div>
   </div>
+  <div id="modal" style="position: fixed; display: flex; top: 0px; height: 100%; left: 0px; right: 0px; backdrop-filter: brightness(70%); background-color: transparent;">
+    <div onclick="toggleModal()" style="margin: auto; border-radius: 20px; width: 600px; padding: 14px 14px; display: flex; align-items: center; flex-direction: column; background-color: white;">
+      <img src="./assets/cross.png" style="cursor: pointer; margin-left: auto; width: 31px; aspect-ratio: 1 / 1;" />
+      <img src="./assets/icon.png" style="aspect-ratio: 77 / 57; width: 77px;" />
+      <p style="font-size: 36px; font-weight: bold; text-align: center;">You have Flexed!</p>
+      <p style="font-size: 24px;">Enter your email and we’ll email you confirmation. Good luck!</p>
+      <div class="d-flex bg-light w-100 p-3 align-items-center gap-2">
+        <img src="./assets/email.png" style="aspect-ratio: 77 / 57; width: 40px;" />
+        <input class="bg-light" type="text" style="border: none; height: 100%; width: 100%;" placeholder="Enter your email" />
+      </div>
+      <button style="margin-left: auto; margin-top: 63px; border: none; width: 130px; aspect-ratio: 130 / 50; font-size: 18px; color: white;" class="rounded-pill p-3 bg-primary">Go</button>
+    </div>
   </div>
+  <script>
+    const toggleModal = (() => {
+      let modal = document.getElementById('modal');
+      return () => {
+        if (modal.style.display !== 'none') {
+          modal.style.display = 'none';
+        } else {
+          modal.style.display = 'flex';
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
