@@ -22,14 +22,14 @@
       <div class="col-md my-3 d-flex flex-column" style="padding-right: 10%;">
         <img src="./assets/wall 1.png" style="aspect-ratio: 454 / 250; width: 100%;" />
         <div class="d-flex w-100 mt-4" style="height: 61px; border-radius: 8px; background-color: #F0F0F0;">
-          <div style="border-radius: 8px;" class="flex-grow-1 text-center d-flex justify-content-center align-items-center py-1">
-            <span class="w-100 h-100 d-flex justify-content-center align-items-center">$10</span>
+          <div onclick="handlePriceClick(10)" style="cursor: pointer; border-radius: 8px;" class="flex-grow-1 text-center d-flex justify-content-center align-items-center py-1">
+            <span id="price-10" class="w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: 8px;">$10</span>
           </div>
-          <div style="border-radius: 8px;" class="flex-grow-1 text-center d-flex justify-content-center align-items-center py-1">
-            <span class="w-100 h-100 d-flex justify-content-center align-items-center bg-primary" style="color: white; border-radius: 8px;">$20</span>
+          <div onclick="handlePriceClick(20)" style="cursor: pointer; border-radius: 8px;" class="flex-grow-1 text-center d-flex justify-content-center align-items-center py-1">
+            <span id="price-20" class="w-100 h-100 d-flex justify-content-center align-items-center bg-primary" style="color: white; border-radius: 8px;">$20</span>
           </div>
-          <div style="border-radius: 8px;" class="flex-grow-1 text-center d-flex justify-content-center align-items-center py-1">
-            <span class="w-100 h-100 d-flex justify-content-center align-items-center">$30</span>
+          <div onclick="handlePriceClick(30)" style="cursor: pointer; border-radius: 8px;" class="flex-grow-1 text-center d-flex justify-content-center align-items-center py-1">
+            <span id="price-30" class="w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: 8px;">$30</span>
           </div>
         </div>
         <div class="w-100" style="margin-top: 52px;">
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="col-md my-3">
-        <h1 style="font-size: 30px; color: red;">You selected the 1 for $10</h1>
+        <h1 style="font-size: 30px; color: red;">You selected the 1 for $<span id="selectedPrice">20</span></span></h1>
         <p style="font-weight: 600; font-size: 21px;">Select any brick from these 100 random bricks</p>
         <div class="d-flex flex-column gap-3" style="list-style: none; overflow: auto; height: 250px;">
           <div class="d-flex gap-4">
@@ -99,6 +99,31 @@
       </div>
     </div>
   </div>
-  </div>
+  <script>
+    const p10 = document.getElementById('price-10');
+    const p20 = document.getElementById('price-20');
+    const p30 = document.getElementById('price-30');
+    const selectedPrice = document.getElementById('selectedPrice');
+    function handlePriceClick(price) {
+      if (price === 10) {
+        p10.classList.add('bg-primary'); p10.style.color = 'white';
+        p20.classList.remove('bg-primary'); p20.style.color = 'black';
+        p30.classList.remove('bg-primary'); p30.style.color = 'black';
+        selectedPrice.innerText = 10;
+      }
+      else if (price === 20) {
+        p10.classList.remove('bg-primary'); p10.style.color = 'black';
+        p20.classList.add('bg-primary'); p20.style.color = 'white';
+        p30.classList.remove('bg-primary'); p30.style.color = 'black';
+        selectedPrice.innerText = 20;
+      }
+      else if (price === 30) {
+        p10.classList.remove('bg-primary'); p10.style.color = 'black';
+        p20.classList.remove('bg-primary'); p20.style.color = 'black';
+        p30.classList.add('bg-primary'); p30.style.color = 'white';
+        selectedPrice.innerText = 30;
+      }
+    }
+  </script>
 </body>
 </html>
