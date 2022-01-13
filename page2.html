@@ -29,10 +29,11 @@
       </div>
       <div class="d-flex flex-column justify-center" style="width: 100%; padding: 55px 0px;">
         <p style="margin-bottom: 0; font-size: 30px; max-width: 464px; margin: 0 auto;">Now just upload your favourite NFT image to your brick</p>
-        <div onclick="toggleModal()" class="d-flex bg-primary" style="cursor: pointer; border-radius: 30px; width: 290px; aspect-ratio: 290 / 204; margin-top: 37px; margin-bottom: 54px; margin-right: auto; margin-left: auto;">
+        <input type="file" style="display: none;" id="imageInput" />
+        <label for="imageInput" class="d-flex bg-primary" style="cursor: pointer; border-radius: 30px; width: 290px; aspect-ratio: 290 / 204; margin-top: 37px; margin-bottom: 54px; margin-right: auto; margin-left: auto;">
           <img src="./assets/camera.png" style="margin: auto; aspect-ratio: 1 / 1; width: 108px;" />
-        </div>
-        <button style="margin-left: auto; border: none; width: 130px; aspect-ratio: 130 / 50; font-size: 18px; color: white;" class="rounded-pill p-3 bg-primary">Go</button>
+        </label>
+        <button onclick="toggleModal()" style="margin-left: auto; border: none; width: 130px; aspect-ratio: 130 / 50; font-size: 18px; color: white;" class="rounded-pill p-3 bg-primary">Go</button>
       </div>
     </div>
     <div class="row" id="faq" style="margin-bottom: 30px;">
