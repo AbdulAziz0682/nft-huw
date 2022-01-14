@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--Bootstrap css-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <!--Bootstrap bundlered JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <link rel="stylesheet" href="./styles.css" />
   <title>Huw</title>
 </head>
 <body style="font-family: Poppins;">
@@ -19,62 +24,76 @@
   </div>
   <div class="container" style="margin-top: 50px;">
     <div class="row flex-column">
-      <div style="display: flex; gap: 8px; align-items: center;">
-        <img src="./assets/sing-brick.png" style="aspect-ratio: 1 / 1; width: 10.4%; min-width: 50px;" />
+      <div class="d-flex align-items-center gap-8">
+        <img src="./assets/sing-brick.png" id="brick" />
         <div>
-          <p style="font-weight: bold; font-size: 30px; margin-bottom: 0;">You Selected Brick</p>
-          <p style="color: red; font-size: 24px; font-weight: 500; margin-bottom: 0;">0001</p>
-          <p style="font-size: 21px; font-weight: 500; margin-bottom: 0;">from a random list of 50</p>
+          <p class="font-weight-bold font-size-30 mb-0">You Selected Brick</p>
+          <p class="font-weight-500 font-size-24 text-danger mb-0">0001</p>
+          <p class="font-weight-500 font-size-21 mb-0">from a random list of 50</p>
         </div>
       </div>
-      <div class="d-flex flex-column justify-center" style="width: 100%; padding: 55px 0px;">
-        <p style="margin-bottom: 0; font-size: 30px; max-width: 464px; margin: 0 auto;">Now just upload your favourite NFT image to your brick</p>
+      <div class="d-flex flex-column justify-center w-100" style="padding: 55px 0px;">
+        <p class="mb-0 font-size-30 mx-auto my-0" style="max-width: 464px;">Now just upload your favourite NFT image to your brick</p>
         <input type="file" style="display: none;" id="imageInput" />
-        <label for="imageInput" class="d-flex bg-primary" style="cursor: pointer; border-radius: 30px; width: 290px; aspect-ratio: 290 / 204; margin-top: 37px; margin-bottom: 54px; margin-right: auto; margin-left: auto;">
-          <img src="./assets/camera.png" style="margin: auto; aspect-ratio: 1 / 1; width: 108px;" />
+        <label id="img-label" for="imageInput" class="d-flex bg-primary cursor-pointer mx-auto">
+          <img src="./assets/camera.png" class="m-auto" style="aspect-ratio: 1 / 1; width: 108px;" />
         </label>
-        <button onclick="toggleModal()" style="margin-left: auto; border: none; width: 130px; aspect-ratio: 130 / 50; font-size: 18px; color: white;" class="rounded-pill p-3 bg-primary">Go</button>
+        <button onclick="toggleModal()" data-toggle="modal" data-target="#exampleModalCenter" style="width: 130px; aspect-ratio: 130 / 50;" class="ml-auto border-0 font-size-18 text-white rounded-pill p-3 btn btn-primary">Go</button>
       </div>
     </div>
-    <div class="row" id="faq" style="margin-bottom: 30px;">
-      <h1 style="font-size: 35px; font-weight: bold;">Frequently Asked Questions</h1>
-      <div class="bg-primary d-flex justify-content-between align-items-center gap-2 py-2" style="color: white">
-        <p class="d-flex align-items-center" style="font-size: 24px; font-weight: bold; margin-bottom: 0;">What collectible is availabe during pre launch</p>
-        <p class="d-flex align-items-center" style="font-size: 32px; font-weight: bold; margin-bottom: 0;">-</p>
-      </div>
-      <p class="bg-light" style="font-size: 21px; margin-top: 10px; height: 110px;">
-        A collectible with a floor value of 2.00 is hiding behind 1 of the 5000 bricks available during our pre launch phase
-      </p>
-      <div class="bg-primary d-flex justify-content-between align-items-center gap-2 py-2" style="color: white; margin-top: 20px;">
-        <p class="d-flex align-items-center" style="font-size: 24px; font-weight: bold; margin-bottom: 0;">Where do I find out?</p>
-        <p class="d-flex align-items-center" style="font-size: 32px; font-weight: bold; margin-bottom: 0;">-</p>
+    <div id="faq" style="margin-bottom: 30px;">
+      <h1 class="font-size-32 font-weight-bold text-primary">Frequently Asked Questions</h1>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header bg-primary font-weight-bold font-size-30">
+            <a class="card-link text-white" data-toggle="collapse" href="#collapseOne">
+              What collectible is availabe during pre launch?
+            </a>
+          </div>
+          <div id="collapseOne" class="collapse show" data-parent="#accordion">
+            <div class="card-body bg-light">
+              A collectible with a floor value of 2.00 is hiding behind 1 of the 5000 bricks available during our pre launch phase.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header bg-primary font-weight-bold font-size-30">
+            <a class="card-link text-white" data-toggle="collapse" href="#collapseTwo">
+              Where do I find out?
+            </a>
+          </div>
+          <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+            <div class="card-body bg-light">
+              Lore ipsum ...
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div id="modal" style="position: fixed; display: none; top: 0px; height: 100%; left: 0px; right: 0px; backdrop-filter: brightness(70%); background-color: transparent;">
-    <div onclick="toggleModal()" style="margin: auto; border-radius: 20px; width: 600px; padding: 14px 14px; display: flex; align-items: center; flex-direction: column; background-color: white;">
-      <img src="./assets/cross.png" style="cursor: pointer; margin-left: auto; width: 31px; aspect-ratio: 1 / 1;" />
-      <img src="./assets/icon.png" style="aspect-ratio: 1 / 1; width: 77px;" />
-      <p style="font-size: 36px; font-weight: bold; text-align: center;">You have Flexed!</p>
-      <p style="font-size: 24px;">Enter your email and we’ll email you confirmation. Good luck!</p>
-      <div class="d-flex bg-light w-100 p-3 align-items-center gap-2">
-        <img src="./assets/email.png" style="aspect-ratio: 77 / 57; width: 40px;" />
-        <input class="bg-light" type="text" style="border: none; height: 100%; width: 100%;" placeholder="Enter your email" />
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="width: 600px;" role="document">
+      <div class="modal-content" style="border-radius: 18px;">
+        <div class="modal-header border-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <img src="./assets/cross.png" style="width: 24px; height: 24px;" />
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="m-auto d-flex align-items-center flex-column bg-white" style="padding: 14px 14px;">
+            <img src="./assets/icon.png" style="aspect-ratio: 1 / 1; width: 77px;" />
+            <p class="font-size-36 font-weight-bold text-center">You have Flexed!</p>
+            <p class="font-size-24">Enter your email and we’ll email you confirmation. Good luck!</p>
+            <div class="d-flex bg-light w-100 p-3 align-items-center gap-2">
+              <img src="./assets/email.png" style="aspect-ratio: 77 / 57; width: 40px;" />
+              <input class="bg-light border-0 h-100 w-100" type="text" placeholder="Enter your email" />
+            </div>
+            <button class="ml-auto border-0 font-size-18 text-white rounded-pill p-3 bg-primary" style="margin-top: 63px; width: 130px; aspect-ratio: 130 / 50;">Go</button>
+          </div>
+        </div>
       </div>
-      <button style="margin-left: auto; margin-top: 63px; border: none; width: 130px; aspect-ratio: 130 / 50; font-size: 18px; color: white;" class="rounded-pill p-3 bg-primary">Go</button>
     </div>
   </div>
-  <script>
-    const toggleModal = (() => {
-      let modal = document.getElementById('modal');
-      return () => {
-        if (modal.style.display !== 'none') {
-          modal.style.display = 'none';
-        } else {
-          modal.style.display = 'flex';
-        }
-      }
-    })();
-  </script>
 </body>
 </html>
